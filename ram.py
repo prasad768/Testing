@@ -18,6 +18,8 @@ def sumdigits (numb):
     return 10
 
 
+
+
 if Isprime(no) and sumdigits(no)==10 :
     print(no," true")
 else:
