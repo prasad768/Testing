@@ -4,7 +4,7 @@ Created on Tue Jan 28 15:56:07 2020
 
 @author: lenovo
 """
-no=73
+no=75
 def Isprime(numb):
     if(numb<2):
         return False
