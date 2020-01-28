@@ -13,6 +13,7 @@ def Isprime(numb):
              return False
     return True
 
+#Please implement using arithmetic fashion
 def sumdigits (numb):
     return 10
 
