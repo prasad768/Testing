@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request
-from mysql import connector
-import OptDef
+from OptDef import getOptDef, postOptDef
+from OptDefList import getOptDefList
 app=Flask(__name__)
 
 @app.route('/test')
@@ -13,11 +13,12 @@ def restTest():
 @app.route('/OptDef', methods=['GET', 'POST'])
 def OptDef():
     if request.method == 'GET':
-        OptDef.getOptDef()
+        return getOptDef()
     if request.method == 'POST':
-        OptDef.postOptDef()
+        return postOptDef()
 
 @app.route('/OptDefList')
-    return optdeflist():
+def OptDefList():
+    return getOptDefList()
 
 app.run()

@@ -1,7 +1,6 @@
 from flask import render_template, request
 from mysql import connector
 
-
 def getOptDef ():
     conn = connector.connect(user='Mercury', password='Mercury@1234', host='104.211.223.42', database='optionspakshidev', auth_plugin='mysql_native_password')
     cursor =conn.cursor()
@@ -12,5 +11,18 @@ def getOptDef ():
 
 def postOptDef ():
     level1 = request.form.get('level1')
-    print ("Level 1", level1)
-    return render_template('OptDef.html', data=1)
+    level2 = request.form.get('level2')
+    level3 = request.form.get('level3')
+    level4 = request.form.get('level4')
+    level5 = request.form.get('level5')
+    
+    sql = """insert into optdef (level1, level2, level3, level4, level5) 
+    values ({level1}, {level2}, {level3}, {level4}, {level5})"""
+    sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5)
+    
+    print ("sql", sql)
+    conn = connector.connect(user='Mercury', password='Mercury@1234', host='104.211.223.42', database='optionspakshidev', auth_plugin='mysql_native_password')
+    cursor =conn.cursor()
+    cursor.execute(sql)
+    cursor.commit()
+    return getOptDef()
