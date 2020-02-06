@@ -11,15 +11,26 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for table test.plan
-CREATE TABLE IF NOT EXISTS `plan` (
-  `planid` int DEFAULT NULL,
-  `atdate` datetime DEFAULT NULL,
-  `strike` decimal(11,2) DEFAULT NULL,
-  `entry` decimal(11,2) DEFAULT NULL,
-  `STOPloss` decimal(11,2) DEFAULT NULL,
-  `target` decimal(11,2) DEFAULT NULL,
-  `risk` varchar(25) DEFAULT NULL
+-- Dumping structure for table test.bank1
+CREATE TABLE IF NOT EXISTS `bank1` (
+  `underlying` varchar(50) DEFAULT NULL,
+  `underlyinglevel1` decimal(11,2) DEFAULT NULL,
+  `underlyinglevel2` decimal(11,2) DEFAULT NULL,
+  `underlyinglevel3` decimal(11,2) DEFAULT NULL,
+  `underlyinglevel4` decimal(11,2) DEFAULT NULL,
+  `underlyinglevel5` decimal(11,2) DEFAULT NULL,
+  `notabove` decimal(11,2) DEFAULT NULL,
+  `notbelow` decimal(11,2) DEFAULT NULL,
+  `ivtop` decimal(11,2) DEFAULT NULL,
+  `ivbottom` decimal(11,2) DEFAULT NULL,
+  `weeklyexpirypriceup` decimal(11,2) DEFAULT NULL,
+  `weeklyexpirypricedown` decimal(11,2) DEFAULT NULL,
+  `15mtrend` int DEFAULT NULL,
+  `maxpaindirection` int DEFAULT NULL,
+  `maxpaintarget` decimal(11,2) DEFAULT NULL,
+  `pcrdirection` int DEFAULT NULL,
+  `pcrto` decimal(11,2) DEFAULT NULL,
+  `pcrotherside` decimal(11,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.

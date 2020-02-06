@@ -24,25 +24,25 @@ tr.gap td {
 <td>{{data["underlying"]}}</td>
 <tr class="alt2">
 <td rowspan=5>Underlying level</td>
-<td>1</td><td> <input type="text" name="f1"> </td> </tr>
+<td>1</td><td> <input type="text" name="f1"value="{{data['l0']}}"> </td> </tr>
 <tr class="alt2"><td>2 </td><td> <input type="text" name="f2" value="{{data['l1']}}"> </td> </tr>
-<tr class="alt2"><td>3 </td><td> <input type="text" name="f3"> </td> </tr>
-<tr class="alt2"><td>4 </td><td> <input type="text" name="f4"> </td> </tr>
-<tr class="alt2"><td>5 </td><td> <input type="text" name="f5"> </td> </tr>
+<tr class="alt2"><td>3 </td><td> <input type="text" name="f3" value="{{data['l2']}}"> </td> </tr>
+<tr class="alt2"><td>4 </td><td> <input type="text" name="f4" value="{{data['l3']}}"> </td> </tr>
+<tr class="alt2"><td>5 </td><td> <input type="text" name="f5" value="{{data['l4']}}"> </td> </tr>
 </tr>
 <tr class="gap"><td ></td></tr>
 <tr  class="alt1">
 <td>not above</td>
 <td></td>
 <td>
-<input type="text" name="f2">
+<input type="text" name="f2" value="{{data['above']}}">
 </td>
 </tr>
 <tr  class="alt1">
 <td> not below</td>
 <td></td>
 <td>
-<input type="text" name=f3">
+<input type="text" name="f3" value="{{data['below']}}">
 </td>
 </tr>
 <tr class="gap"><td ></td></tr>
@@ -50,34 +50,34 @@ tr.gap td {
 <td rowspan=2>IV</td>
 <td>top</td>
 <td>
-<input type="text" name="f4"> </td>
+<input type="text" name="f4" value="{{data['top']}}"> </td>
 </tr>
 <tr class="alt2">
 <td>Bottom</td>
 <td>
-<input type="text" name="f4"> </td>
+<input type="text" name="f4" value="{{data['bottom']}}"> </td>
 </tr>
 <tr class="gap"><td ></td></tr>
 <tr class="alt1">
 <td rowspan=2>weekly expiry - Price</td>
 <td>Up</td>
 <td>
-<input type="text" name="txtUp"> </td>
+<input type="text" name="txtUp" value="{{data['up']}}"> </td>
 </tr>
 <tr>
 <td>Down</td>
 <td>
-<input type="text" name="txtDown"> </td>
+<input type="text" name="txtDown" value="{{data['down']}}"> </td>
 </tr>
 
 <tr>
 <td >15 m trend</td>
 <td></td>
 <td>
-<select name="dd1">
-<option> up</option>
-<option>down</option>
-<option>volatil</option>
+<select name="dd1" value="{{data['l9']}}">
+<option>3=up</option>
+<option>2=down</option>
+<option>1=volatil</option>
 </select>
 </td>
 </tr>
@@ -86,17 +86,17 @@ tr.gap td {
 <td rowspan=2> max pain</td>
 <td>Direction</td>
 <td>
-<select name="dd2">
-<option> up</option>
-<option selected>down</option>
-<option>no mv</option>
+<select name="dd2" value="{{data['direction']}}">
+<option>1= up</option>
+<option3=selected>down</option>
+<option>2=no mv</option>
 </select>
 </td>
 </tr>
 <tr>
 <td>Target</td>
 <td>
-<input type="text" name="f6">
+<input type="text" name="f6" value="{{data['target']}}">
 </td>
 </tr>
 <tr class="gap"><td ></td></tr>
@@ -106,21 +106,21 @@ tr.gap td {
 
 <td>
 <select name="dd3">
-<option> up</option>
-<option>down</option>
-<option>no mc</option>
+<option {% if data['pcrdirection']==1 %}selected{% endif %} value="47000">up</option>
+<option {% if data['pcrdirection']==2 %}selected{% endif %} value="45000">{{data['pcrdirection']}}-down</option>
+<option {% if data['pcrdirection']==3 %}selected{% endif %} value="46000">no mc</option>
 </select>
 </td>
 </tr>
 <tr>
 <td>To</td>
 <td>
-<input type="text" name="f7">
+<input type="text" name="f7" value="{{data['to']}}">
 </td>
 </tr>
 <td>Other side</td>
 <td>
-<input type="text" name="f8">
+<input type="text" name="f8" value="{{data['other']}}">
 </td>
 </tr>
 </table>
