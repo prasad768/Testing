@@ -15,7 +15,7 @@ def roots():
     cursor =conn.cursor()
     cursor.execute("select *  from bank1")
     row=cursor.fetchall()[0]
-    a={"underlying":row[0]}
+    a={"underlying":row[0], "l1":row[1],"l2":row[2]}
     return render_template('OptDef.html', data=a)
 
 @app.route('/OptDefList')
