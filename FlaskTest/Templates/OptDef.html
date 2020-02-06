@@ -17,6 +17,7 @@ tr.gap td {
 </style>
 </head>
 <body>
+<form action="http://localhost:5000/OptDef" method="post">
 <table>
 <tr class="alt1">
 <td >Underlying</td>
@@ -24,11 +25,11 @@ tr.gap td {
 <td>{{data["underlying"]}}</td>
 <tr class="alt2">
 <td rowspan=5>Underlying level</td>
-<td>1</td><td> <input type="text" name="f1"value="{{data['l0']}}"> </td> </tr>
-<tr class="alt2"><td>2 </td><td> <input type="text" name="f2" value="{{data['l1']}}"> </td> </tr>
-<tr class="alt2"><td>3 </td><td> <input type="text" name="f3" value="{{data['l2']}}"> </td> </tr>
-<tr class="alt2"><td>4 </td><td> <input type="text" name="f4" value="{{data['l3']}}"> </td> </tr>
-<tr class="alt2"><td>5 </td><td> <input type="text" name="f5" value="{{data['l4']}}"> </td> </tr>
+<td>1</td><td> <input type="text" name="level1"value="{{data['l0']}}"> </td> </tr>
+<tr class="alt2"><td>2 </td><td> <input type="text" name="level2" value="{{data['l1']}}"> </td> </tr>
+<tr class="alt2"><td>3 </td><td> <input type="text" name="level3" value="{{data['l2']}}"> </td> </tr>
+<tr class="alt2"><td>4 </td><td> <input type="text" name="level4" value="{{data['l3']}}"> </td> </tr>
+<tr class="alt2"><td>5 </td><td> <input type="text" name="level5" value="{{data['l4']}}"> </td> </tr>
 </tr>
 <tr class="gap"><td ></td></tr>
 <tr  class="alt1">
@@ -123,7 +124,8 @@ tr.gap td {
 </td>
 </tr>
 </table>
-<input type="button" Value="Save"/>
+<button type="submit" Value="Save" />
+</form>
 </body>
 </html>
 
