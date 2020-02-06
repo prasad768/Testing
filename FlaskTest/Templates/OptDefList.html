@@ -17,111 +17,37 @@ tr.gap td {
 </style>
 </head>
 <body>
-<table>
-<tr class="alt1">
-<td >Underlying</td>
-<td></td>
-<td>BANKNIFTY</td>
-<tr class="alt2">
-<td rowspan=5>Underlying level</td>
-<td>1</td><td> <input type="text" name="f1"> </td> </tr>
-<tr class="alt2"><td>2 </td><td> <input type="text" name="f2"> </td> </tr>
-<tr class="alt2"><td>3 </td><td> <input type="text" name="f3"> </td> </tr>
-<tr class="alt2"><td>4 </td><td> <input type="text" name="f4"> </td> </tr>
-<tr class="alt2"><td>5 </td><td> <input type="text" name="f5"> </td> </tr>
-</tr>
-<tr class="gap"><td ></td></tr>
-<tr  class="alt1">
-<td>not above</td>
-<td></td>
-<td>
-<input type="text" name="f2">
-</td>
-</tr>
-<tr  class="alt1">
-<td> not below</td>
-<td></td>
-<td>
-<input type="text" name=f3">
-</td>
-</tr>
-<tr class="gap"><td ></td></tr>
-<tr  class="alt2">
-<td rowspan=2>IV</td>
-<td>top</td>
-<td>
-<input type="text" name="f4"> </td>
-</tr>
-<tr class="alt2">
-<td>Bottom</td>
-<td>
-<input type="text" name="f4"> </td>
-</tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt1">
-<td rowspan=2>weekly expiry - Price</td>
-<td>Up</td>
-<td>
-<input type="text" name="txtUp"> </td>
-</tr>
-<tr>
-<td>Down</td>
-<td>
-<input type="text" name="txtDown"> </td>
-</tr>
-
-<tr>
-<td >15 m trend</td>
-<td></td>
-<td>
-<select name="dd1">
-<option> up</option>
-<option>down</option>
-<option>volatil</option>
-</select>
-</td>
-</tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt2">
-<td rowspan=2> max pain</td>
-<td>Direction</td>
-<td>
-<select name="dd2">
-<option> up</option>
-<option selected>down</option>
-<option>no mv</option>
-</select>
-</td>
-</tr>
-<tr>
+<table border="1" >
+<tr><td>Time</td>
+<td>Strike</td>
+<td>Entry</td>
+<td>Stoploss</td>
 <td>Target</td>
-<td>
-<input type="text" name="f6">
-</td>
-</tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt1">
-<td rowspan=3> pcr</td>
-<td>Direction</td>
-
-<td>
-<select name="dd3">
-<option> up</option>
-<option>down</option>
-<option>no mc</option>
-</select>
-</td>
+<td>Risk</td>
 </tr>
 <tr>
-<td>To</td>
-<td>
-<input type="text" name="f7">
-</td>
+<td>{{data["time"]}}</td>
+<td>{{data["strike"]}}</td>
+<td>{{data["entry"]}}</td>
+<td>{{data["stoploss"]}}</td>
+<td>{{data["target"]}}</td>
+<td>{{data["risk"]}}</td>
 </tr>
-<td>Other side</td>
-<td>
-<input type="text" name="f8">
-</td>
+<tr>
+<td>{{data["time"]}}</td>
+<td>{{data["strike"]}}</td>
+<td>{{data["entry"]}}</td>
+<td>{{data["stoploss"]}}</td>
+<td>{{data["target"]}}</td>
+<td>{{data["risk"]}}</td>
+</tr>
+<tr>
+<td>{{data["time"]}}</td>
+<td>{{data["strike"]}}</td>
+<td>{{data["entry"]}}</td>
+<td>{{data["stoploss"]}}</td>
+<td>{{data["target"]}}</td>
+<td>{{data["risk"]}}</td>
 </tr>
 </table>
 <input type="button" Value="Save"/>
