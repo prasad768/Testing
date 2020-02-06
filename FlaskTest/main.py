@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template
+from mysql import connector
 app=Flask(__name__)
 
 @app.route('/test')
@@ -10,11 +11,15 @@ def restTest():
 
 @app.route('/OptDef')
 def roots():
-    a={}
+    conn = connector.connect(user='root', password='123456', host='localhost', database='test', auth_plugin='mysql_native_password')
+    cursor =conn.cursor()
+    cursor.execute("select *  from bank1")
+    row=cursor.fetchall()[0]
+    a={"underlying":row[0]}
     return render_template('OptDef.html', data=a)
 
 @app.route('/OptDefList')
-def roots():
+def optdeflist():
     a={}
     return render_template('OptDefList.html', data=a)
 
