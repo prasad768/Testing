@@ -12,7 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table test.bank1
-CREATE TABLE IF NOT EXISTS OptDef (
+CREATE TABLE IF NOT EXISTS OptDefPlan (
+  Id int not null AUTO_INCREMENT,
   Underlying varchar(10) DEFAULT NULL,
   Level1 decimal(11,2) DEFAULT NULL,
   Level2 decimal(11,2) DEFAULT NULL,
