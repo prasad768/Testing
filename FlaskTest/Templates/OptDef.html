@@ -74,10 +74,10 @@ tr.gap td {
 <td >15 m trend</td>
 <td></td>
 <td>
-<select name="dd1" value="{{data['l9']}}">
-<option>3=up</option>
-<option>2=down</option>
-<option>1=volatil</option>
+<select name="dd1" >
+<option {% if data['15mtrend']==1 %}selected{% endif %}>UP </option>
+<option {% if data['15mtrend']==2 %}selected{% endif %}>down </option>
+<option {% if data['15mtrend']==3 %}selected{% endif %}>volatile </option>
 </select>
 </td>
 </tr>
@@ -86,10 +86,9 @@ tr.gap td {
 <td rowspan=2> max pain</td>
 <td>Direction</td>
 <td>
-<select name="dd2" value="{{data['direction']}}">
-<option>1= up</option>
-<option3=selected>down</option>
-<option>2=no mv</option>
+<select name="dd2" >
+<option {% if data['direction']==1 %}selected{% endif %}>UP</option>
+<option {% if data['direction']==2 %}selected{% endif %}>NO MC</option>
 </select>
 </td>
 </tr>
