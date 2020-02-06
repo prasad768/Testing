@@ -1,8 +1,7 @@
 from flask import render_template, request
-from mysql import connector
-
+from common import getConn
 def getOptDef ():
-    conn = connector.connect(user='Mercury', password='Mercury@1234', host='104.211.223.42', database='optionspakshidev', auth_plugin='mysql_native_password')
+    conn = getConn()
     cursor =conn.cursor()
     cursor.execute("select *  from bank1")
     row=cursor.fetchall()[0]
@@ -21,7 +20,7 @@ def postOptDef ():
     sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5)
     
     print ("sql", sql)
-    conn = connector.connect(user='Mercury', password='Mercury@1234', host='104.211.223.42', database='optionspakshidev', auth_plugin='mysql_native_password')
+    conn = getConn()
     cursor =conn.cursor()
     cursor.execute(sql)
     cursor.commit()
