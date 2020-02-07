@@ -2,6 +2,8 @@
 
 from flask import Flask, render_template, request
 from OptDef import getOptDef, postOptDef
+from events import getdata, postdata
+
 from OptDefList import getOptDefList
 app=Flask(__name__)
 
@@ -20,5 +22,13 @@ def OptDef():
 @app.route('/OptDefList')
 def OptDefList():
     return getOptDefList()
+
+@app.route('/events',methods=['GET','POST'])
+def table1():
+    if request.method == 'GET':
+        return getdata()
+    if request.method == 'POST':
+        return postdata()
+
 
 app.run()

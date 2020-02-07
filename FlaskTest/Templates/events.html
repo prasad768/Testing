@@ -1,0 +1,61 @@
+
+
+<!CODETYPE html>
+<html>
+<body>
+<form action="http://localhost:5000/events"  method="post">
+<table>
+    <input type="hidden" id="idno" name="idno" value="{{data["idno"]}}">
+<tr>
+<td>newsdate</td>
+<td></td>
+<td>
+<input type="date" name="newsdate" value="{{data["newsdate"]}}">
+</td>
+</tr>
+<tr><tr>
+<td>header</td>
+<td></td>
+<td>
+<input type="text" name="header" value="{{data["header"]}}">
+</td>
+</tr>
+<td>type</td>
+<td></td>
+<td>
+<input type="text" name="type" value="{{data["type"]}}">
+</td>
+</tr>
+<tr>
+<td>impact</td>
+<td></td>
+<td>
+<input type="number" name="impact" value="{{data["impact"]}}">
+</td>
+</tr>
+<tr>
+<td>impactrationale</td>
+<td></td>
+<td>
+<input type="text" name="impactrationale" value="{{data["impactrationale"]}}">
+</td>
+</tr>
+<tr>
+<td>url</td>
+<td></td>
+<td>
+<input type="url" name="url" value="{{data["url"]}}">
+</td>
+</tr>
+<tr>
+<td>effectivedate</td>
+<td></td>
+<td>
+<input type="date" name="effectivedate" value="{{data["effectivedate"]}}">
+</td>
+</tr>
+</table>
+<button type="submit" value="add"> add </button>
+</form>
+</body>
+</html>
