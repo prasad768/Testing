@@ -1,7 +1,7 @@
-from mysql import connector
 from flask import render_template
+from common import getConn
 def getOptDefList ():
-    con = connector.connect(user='root',password='123456789',host='localhost',database='test',auth_plugin='mysql_native_password')
+    con = getConn()
     cursor =con.cursor()
     cursor.execute("select *  from planning")
     a=cursor.fetchall()
