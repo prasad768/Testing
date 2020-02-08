@@ -19,13 +19,15 @@ tr.gap td {
 <body>
 <form action="http://localhost:5000/OptDef" method="post">
 <table>
+<input type="hidden" id="id" name="id" value="{{data['id']}}">
 <tr class="alt1">
 <td >Underlying</td>
 <td></td>
 <td>{{data["underlying"]}}</td>
 <tr class="alt2">
 <td rowspan=5>Underlying level</td>
-                <td>1</td><td> <input type="text" name="level1"value="{{data['l0']}}"> </td> </tr>
+                
+                <td>1</td><td> <input type="text" name="level1" value="{{data['l0']}}"> </td> </tr>
 <tr class="alt2"><td>2 </td><td> <input type="text" name="level2" value="{{data['l1']}}"> </td> </tr>
 <tr class="alt2"><td>3 </td><td> <input type="text" name="level3" value="{{data['l2']}}"> </td> </tr>
 <tr class="alt2"><td>4 </td><td> <input type="text" name="level4" value="{{data['l3']}}"> </td> </tr>
@@ -36,14 +38,14 @@ tr.gap td {
 <td>not above</td>
 <td></td>
 <td>
-<input type="text" name="f2" value="{{data['above']}}">
+<input type="text" name="notabove" value="{{data['above']}}">
 </td>
 </tr>
 <tr  class="alt1">
 <td> not below</td>
 <td></td>
 <td>
-<input type="text" name="f3" value="{{data['below']}}">
+<input type="text" name="notbelow" value="{{data['below']}}">
 </td>
 </tr>
 <tr class="gap"><td ></td></tr>
@@ -51,34 +53,34 @@ tr.gap td {
 <td rowspan=2>IV</td>
 <td>top</td>
 <td>
-<input type="text" name="f4" value="{{data['top']}}"> </td>
+<input type="text" name="ivtop" value="{{data['top']}}"> </td>
 </tr>
 <tr class="alt2">
 <td>Bottom</td>
 <td>
-<input type="text" name="f4" value="{{data['bottom']}}"> </td>
+<input type="text" name="ivbottom" value="{{data['bottom']}}"> </td>
 </tr>
 <tr class="gap"><td ></td></tr>
 <tr class="alt1">
 <td rowspan=2>weekly expiry - Price</td>
 <td>Up</td>
 <td>
-<input type="text" name="txtUp" value="{{data['up']}}"> </td>
+<input type="text" name="weeklyexpirytargetup" value="{{data['up']}}"> </td>
 </tr>
 <tr>
 <td>Down</td>
 <td>
-<input type="text" name="txtDown" value="{{data['down']}}"> </td>
+<input type="text" name="weeklyexpirytargetdown" value="{{data['down']}}"> </td>
 </tr>
 
 <tr>
-<td >15 m trend</td>
+<td >trend15m</td>
 <td></td>
 <td>
-<select name="dd1" >
-<option {% if data['15mtrend']==1 %}selected{% endif %}>UP </option>
-<option {% if data['15mtrend']==2 %}selected{% endif %}>down </option>
-<option {% if data['15mtrend']==3 %}selected{% endif %}>volatile </option>
+<select name="trend15m" >
+<option {% if data['15mtrend']==1 %}selected{% endif %} value="1">UP </option>
+<option {% if data['15mtrend']==2 %}selected{% endif %} value="2">down </option>
+<option {% if data['15mtrend']==3 %}selected{% endif %} value="3">volatile </option>
 </select>
 </td>
 </tr>
@@ -87,16 +89,16 @@ tr.gap td {
 <td rowspan=2> max pain</td>
 <td>Direction</td>
 <td>
-<select name="dd2" >
-<option {% if data['direction']==1 %}selected{% endif %}>UP</option>
-<option {% if data['direction']==2 %}selected{% endif %}>NO MC</option>
+<select name="maxpaindirection" >
+<option {% if data['direction']==1 %}selected{% endif %} value="1">UP</option>
+<option {% if data['direction']==2 %}selected{% endif %} value="2">NO MC</option>
 </select>
 </td>
 </tr>
 <tr>
 <td>Target</td>
 <td>
-<input type="text" name="f6" value="{{data['target']}}">
+<input type="text" name="maxpaintarget" value="{{data['target']}}">
 </td>
 </tr>
 <tr class="gap"><td ></td></tr>
@@ -105,26 +107,26 @@ tr.gap td {
 <td>Direction</td>
 
 <td>
-<select name="dd3">
-<option {% if data['pcrdirection']==1 %}selected{% endif %} value="47000">up</option>
-<option {% if data['pcrdirection']==2 %}selected{% endif %} value="45000">{{data['pcrdirection']}}-down</option>
-<option {% if data['pcrdirection']==3 %}selected{% endif %} value="46000">no mc</option>
+<select name="pcrdirection">
+<option {% if data['pcrdirection']==1 %}selected{% endif %} value="1" >up</option>
+<option {% if data['pcrdirection']==2 %}selected{% endif %} value="2">down</option>
+<option {% if data['pcrdirection']==3 %}selected{% endif %} value="3" >no mc</option>
 </select>
 </td>
 </tr>
 <tr>
 <td>To</td>
 <td>
-<input type="text" name="f7" value="{{data['to']}}">
+<input type="text" name="pcrup" value="{{data['to']}}">
 </td>
 </tr>
 <td>Other side</td>
 <td>
-<input type="text" name="f8" value="{{data['other']}}">
+<input type="text" name="pcrdown" value="{{data['other']}}">
 </td>
 </tr>
 </table>
-<button type="submit" Value="Save" />
+<button type="submit" Value="Save"> Save </button>
 </form>
 </body>
 </html>
