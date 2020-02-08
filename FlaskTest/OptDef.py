@@ -3,25 +3,44 @@ from common import getConn
 def getOptDef ():
     conn = getConn()
     cursor =conn.cursor()
-    cursor.execute("select *  from bank1")
+    cursor.execute("select *  from optdefplan ")
     row=cursor.fetchall()[0]
-    a={"underlying":row[0],"l0":row[1], "l1":row[2],"l2":row[3],"l3":row[4],"l4":row[5],"above":row[6],"below":row[7],"top":row[8],"bottom":row[9],"up":row[10],"down":row[11],"15mtrend":row[12],"direction":row[13],"target":row[14],"pcrdirection":row[15],"to":row[16],"other":row[17]}
+    a={"id":row[0], "underlying":row[1],"l0":row[2], "l1":row[3],"l2":row[4],"l3":row[5],"l4":row[6],"above":row[7],"below":row[8],"top":row[9],"bottom":row[10],"up":row[11],"down":row[12],"trend15m":row[13],"direction":row[14],"target":row[15],"pcrdirection":row[16],"to":row[17],"other":row[18]}
     return render_template('OptDef.html', data=a)
 
 def postOptDef ():
+    id=request.form.get('id')
     level1 = request.form.get('level1')
     level2 = request.form.get('level2')
     level3 = request.form.get('level3')
     level4 = request.form.get('level4')
     level5 = request.form.get('level5')
+    notabove = request.form.get('notabove')
+    notbelow = request.form.get('notbelow')
+    ivtop = request.form.get('ivtop')
+    ivbottom = request.form.get('ivbottom')
+    weeklyexpirytargetup = request.form.get('weeklyexpirytargetup')
+    weeklyexpirytargetdown = request.form.get('weeklyexpirytargetdown')
+    trend15m = request.form.get('trend15m')
+    maxpaindirection = request.form.get('maxpaindirection')
+    maxpaintarget = request.form.get('maxpaintarget')
+    pcrdirection = request.form.get('pcrdirection')
+    pcrup = request.form.get('pcrup')
+    pcrdown = request.form.get('pcrdown')
     
-    sql = """insert into optdef (level1, level2, level3, level4, level5) 
-    values ({level1}, {level2}, {level3}, {level4}, {level5})"""
-    sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5)
+    if id==0: 
+        sql = """insert into optDefPlan  (level1, level2, level3, level4, level5,notabove,notbelow,ivtop,ivbottom,weeklyexpirytargetup,weeklyexpirytargetdown,trend15m,maxpaindirection,maxpaintarget,pcrdirection,pcrup,pcrdown) 
+        values ({level1}, {level2}, {level3}, {level4}, {level5},{notabove},{notbelow},{ivtop},{ivbottom},{weeklyexpirytargetup},{weeklyexpirytargetdown},{trend15m},{maxpaindirection},{maxpaintarget},{pcrdirection},{pcrup},{pcrdown})"""
+        sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5,notabove=notabove,notbelow=notbelow,ivtop=ivtop,ivbottom=ivbottom,weeklyexpirytargetup=weeklyexpirytargetup,weeklyexpirytargetdown=weeklyexpirytargetdown,trend15m=trend15m,maxpaindirection=maxpaindirection,maxpaintarget=maxpaintarget,pcrdirection=pcrdirection,pcrup=pcrup,pcrdown=pcrdown)
+    else:
+        sql="""update optdefplan set level1='{level1}', level2='{level2}', level3='{level3}', level4='{level4}', level5='{level5}',notabove='{notabove}',notbelow='{notbelow}',ivtop='{ivtop}',ivbottom='{ivbottom}',weeklyexpirytargetup='{weeklyexpirytargetup}',weeklyexpirytargetdown='{weeklyexpirytargetdown}',trend15m='{trend15m}',maxpaindirection='{maxpaindirection}'
+           where id={id} """
+        sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5,notabove=notabove,notbelow=notbelow,ivtop=ivtop,ivbottom=ivbottom,weeklyexpirytargetup=weeklyexpirytargetup,weeklyexpirytargetdown=weeklyexpirytargetdown,trend15m=trend15m,maxpaindirection=maxpaindirection,maxpaintarget=maxpaintarget,pcrdirection=pcrdirection,pcrup=pcrup,pcrdown=pcrdown,id=id)
+    
     
     print ("sql", sql)
     conn = getConn()
     cursor =conn.cursor()
     cursor.execute(sql)
-    cursor.commit()
+    conn.commit()
     return getOptDef()
