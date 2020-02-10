@@ -7,10 +7,13 @@ Created on Fri Feb  7 10:07:41 2020
 
 from flask import render_template, request
 from common import getConn
-def getdata ():
+def getdata (idno):
     conn = getConn()
     cursor =conn.cursor()
-    cursor.execute("select *  from events")
+    if idno is None:
+        cursor.execute("select *  from events".format(idno=idno))
+    else:
+        cursor.execute("select *  from events where idno={idno}".format(idno=idno))
     row=cursor.fetchall()[0]
     a={"idno":row[0], "newsdate":row[1], "header":row[2], "type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]}
     return render_template('events.html', data=a)
@@ -25,7 +28,7 @@ def postdata ():
     url=request.form.get('url')
     effectivedate=request.form.get('effectivedate')
     
-    if id==0:    
+    if idno==0:    
        sql = """insert INTO events (newsdate, header, newstype, impact, impactrationale, url, effectivedate) 
        VALUES ('{newsdate}', '{header}', '{newstype}', '{impact}', '{impactrationale}', '{url}', '{effectivedate}')"""
        sql = sql.format(sql, idno=idno, newsdate=newsdate, header=header, newstype=newstype, impact=impact, impactrationale=impactrationale, url=url, effectivedate=effectivedate)
@@ -33,7 +36,10 @@ def postdata ():
         sql = """update events set newsdate='{newsdate}', header='{header}', newstype='{newstype}', impact='{impact}', impactrationale='{impactrationale}', url='{url}', effectivedate='{effectivedate}' 
           where idno={idno} """
         sql = sql.format(sql,  newsdate=newsdate, header=header, newstype=newstype, impact=impact, impactrationale=impactrationale, url=url, effectivedate=effectivedate, idno=idno)
-    
+         #idno=request.form.get('idno') 
+         #sql="""delete from events where idno={idno} """
+         #sql=sql.format(sql,idno=idno)
+        
     
     print ("sql", sql)
     conn = getConn()

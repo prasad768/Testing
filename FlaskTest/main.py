@@ -1,11 +1,15 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request
 from OptDef import getOptDef, postOptDef
 from events import getdata, postdata
 
-from OptDefList import getOptDefList
+#@from OptDefList import getOptDefList
 app=Flask(__name__)
+
+@app.route('/events1')
+def events1():
+    return geteventslist1 ()
 
 @app.route('/')
 def root():
@@ -27,12 +31,19 @@ def OptDef():
 def OptDefList():
     return getOptDefList()
 
-@app.route('/events',methods=['GET','POST'])
+@app.route('/events',methods=['GET', 'POST'])
 def table1():
+    idno =request.args.get("idno")
     if request.method == 'GET':
-        return getdata()
+        return getdata(idno)
     if request.method == 'POST':
-        return postdata()
-
+        return postdata(idno)
+    
+def geteventslist1 ():
+    con=getConn()
+    cursor =con.cursor()
+    cursor.execute("select idno,newsdate from events")
+    a=cursor.fetchall()
+    return render_template('events_Select.html',data=a)
 
 app.run()
