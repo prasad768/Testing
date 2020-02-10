@@ -11,17 +11,13 @@ app=Flask(__name__)
 def root():
     return render_template('main.html')
 
-@app.route('/test')
-def restTest():
-    a={"name":"Roopesh", "company":"Artha Sangraha", "doj":"2019/01/02"}
-    return render_template('abc.html', data=a)
-
 @app.route('/optdef', methods=['GET', 'POST'])
 def OptDef():
+    id = request.args.get("id")
     if request.method == 'GET':
-        return getOptDef()
+        return getOptDef(id)
     if request.method == 'POST':
-        return postOptDef()
+        return postOptDef(id)
 
 @app.route('/optdeflist')
 def OptDefList():
