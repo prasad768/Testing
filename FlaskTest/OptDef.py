@@ -36,10 +36,13 @@ def postOptDef ():
         values ({level1}, {level2}, {level3}, {level4}, {level5},{notabove},{notbelow},{ivtop},{ivbottom},{weeklyexpirytargetup},{weeklyexpirytargetdown},{trend15m},{maxpaindirection},{maxpaintarget},{pcrdirection},{pcrup},{pcrdown})"""
         sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5,notabove=notabove,notbelow=notbelow,ivtop=ivtop,ivbottom=ivbottom,weeklyexpirytargetup=weeklyexpirytargetup,weeklyexpirytargetdown=weeklyexpirytargetdown,trend15m=trend15m,maxpaindirection=maxpaindirection,maxpaintarget=maxpaintarget,pcrdirection=pcrdirection,pcrup=pcrup,pcrdown=pcrdown)
     else:
-        sql="""update optdef set level1='{level1}', level2='{level2}', level3='{level3}', level4='{level4}', level5='{level5}',notabove='{notabove}',notbelow='{notbelow}',ivtop='{ivtop}',ivbottom='{ivbottom}',weeklyexpirytargetup='{weeklyexpirytargetup}',weeklyexpirytargetdown='{weeklyexpirytargetdown}',trend15m='{trend15m}',maxpaindirection='{maxpaindirection}'
-           where id={id} """
-        sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5,notabove=notabove,notbelow=notbelow,ivtop=ivtop,ivbottom=ivbottom,weeklyexpirytargetup=weeklyexpirytargetup,weeklyexpirytargetdown=weeklyexpirytargetdown,trend15m=trend15m,maxpaindirection=maxpaindirection,maxpaintarget=maxpaintarget,pcrdirection=pcrdirection,pcrup=pcrup,pcrdown=pcrdown,id=id)
-    
+        #sql="""update optdef set level1='{level1}', level2='{level2}', level3='{level3}', level4='{level4}', level5='{level5}',notabove='{notabove}',notbelow='{notbelow}',ivtop='{ivtop}',ivbottom='{ivbottom}',weeklyexpirytargetup='{weeklyexpirytargetup}',weeklyexpirytargetdown='{weeklyexpirytargetdown}',trend15m='{trend15m}',maxpaindirection='{maxpaindirection}'
+           #where id={id} """
+       # sql = sql.format(sql, level1=level1, level2=level2, level3=level3, level4=level4, level5=level5,notabove=notabove,notbelow=notbelow,ivtop=ivtop,ivbottom=ivbottom,weeklyexpirytargetup=weeklyexpirytargetup,weeklyexpirytargetdown=weeklyexpirytargetdown,trend15m=trend15m,maxpaindirection=maxpaindirection,maxpaintarget=maxpaintarget,pcrdirection=pcrdirection,pcrup=pcrup,pcrdown=pcrdown,id=id)
+        id=request.form.get('id')
+        sql="""delete from optdef where id={id} """
+        sql=sql.format(sql,id=id)   
+        
     
     print ("sql", sql)
     conn = getConn()

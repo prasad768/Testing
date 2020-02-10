@@ -2,9 +2,9 @@
 <body>
 
 <table>
-<tr> <td>ID</td><td>Name</td>
+<tr> <td>ID</td><td>Name</td></tr>
 {%for row in data %}
-<tr> <td><a href="http://127.0.0.1:5000/optdef?id={{row[0]}}"> {{row[0]}}</a></td><td>{{row[1]}}</td></tr>
+<tr> <td><a href="http://127.0.0.1:5000/OptDef?id={{row[0]}}"> {{row[0]}}</a></td><td>{{row[1]}}</td></tr>
 {% endfor%}
 </table>
 </body>
