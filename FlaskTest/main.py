@@ -7,7 +7,7 @@ from events import getdata, postdata
 #@from OptDefList import getOptDefList
 app=Flask(__name__)
 
-@app.route('/events1')
+@app.route('/eventlist')
 def events1():
     return geteventslist1 ()
 

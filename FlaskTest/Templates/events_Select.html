@@ -4,7 +4,7 @@
 <tr>
 <td>IDNO</td><td>newsdate</td>
 {%for row in data %}
-<tr> <td><a href="http://127.0.0.1:5000/events?id={{row[0]}}"> {{row[0]}}</a></td><td>{{row[1]}}</td></tr>
+<tr> <td><a href="/events?idno={{row[0]}}"> {{row[0]}}</a></td><td>{{row[1]}}</td></tr>
 {% endfor%}
 </table>
 </body>
