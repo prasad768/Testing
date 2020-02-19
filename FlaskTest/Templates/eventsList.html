@@ -8,19 +8,19 @@
 <td>type</td>
 <td>impact</td>
 <td>impactrationale</td>
-<td>url</td>
+<td>url </td>
 <td>effectivedate</td>
 </tr>
-{{rows}}
 {% for data in rows %}
 <tr>
 <td>{{data["newsdate"]}}</td>
-<td>{{data["header"]}}</td>
+<td><a href="/events?id={{data['id']}}">  {{data["header"]}} </a></td>
 <td>{{data["type"]}}</td>
 <td>{{data["impact"]}}</td>
 <td>{{data["impactrationale"]}}</td>
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
+<td><a href="/deleteevent?id={{data['id']}}">Delete</a></td>
 </tr>
 {%endfor %}
 </body>

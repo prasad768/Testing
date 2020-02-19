@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request
 from OptDef import getOptDef, postOptDef
 from events import getdata, postdata
-from EventsList import getEventsList
+from EventsList import getEventsList, DeleteEvent
 
 from OptDefList import getOptDefList1
 app=Flask(__name__)
@@ -34,6 +34,13 @@ def table1():
 
 @app.route('/eventslist')
 def eventslist():
-    return render_template('eventsList.html', data=getEventsList())
+    return render_template('eventsList.html', rows=getEventsList())
+
+@app.route('/deleteevent')
+def eventsDelete():
+    id = request.args.get("id")
+    DeleteEvent(id)
+    return render_template('eventsList.html', rows=getEventsList())
+
 
 app.run()
