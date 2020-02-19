@@ -11,8 +11,10 @@
 <td>url</td>
 <td>effectivedate</td>
 </tr>
+{{rows}}
+{% for data in rows %}
 <tr>
-+<td>{{data["newsdate"]}}</td>
+<td>{{data["newsdate"]}}</td>
 <td>{{data["header"]}}</td>
 <td>{{data["type"]}}</td>
 <td>{{data["impact"]}}</td>
@@ -20,6 +22,7 @@
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
 </tr>
+{%endfor %}
 </body>
 </table>
 <input type="Add" Value="Save"/>

@@ -7,14 +7,6 @@ Created on Fri Feb  7 10:07:41 2020
 
 from flask import render_template, request
 from common import getConn
-
-def getEventsList():
-    conn = getConn()
-    cursor =conn.cursor()
-    cursor.execute("select *  from events ")
-    rows=cursor.fetchall()
-    return rows
-    
     
 def getdata (id):
     conn = getConn()
