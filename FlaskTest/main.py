@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from OptDef import getOptDef, postOptDef
 from events import getdata, postdata
+from EventsList import getEventsList
 from common import getConn
 
 from OptDefList import getOptDefList
@@ -12,11 +13,11 @@ app=Flask(__name__)
 def root():
     return render_template('main.html')
 
-@app.route('/OptDeflist')
+@app.route('/optdeflist')
 def OptDeflist():
     return getOptDefList1 ()
     
-@app.route('/OptDef', methods=['GET', 'POST'])
+@app.route('/optdef', methods=['GET', 'POST'])
 def OptDef():
     id = request.args.get("id")
     if request.method == 'GET':
@@ -31,9 +32,14 @@ def OptDefList():
 @app.route('/events',methods=['GET','POST'])
 def table1():
     if request.method == 'GET':
-        return getdata()
+        id = request.args.get("id")
+        return getdata(id)
     if request.method == 'POST':
         return postdata()
+
+@app.route('/eventslist')
+def eventslist():
+    return render_template('eventsList.html', data=getEventsList())
 
 def getOptDefList1 ():
     con = getConn()

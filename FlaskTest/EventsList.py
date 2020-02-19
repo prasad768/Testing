@@ -8,14 +8,16 @@ from flask import Flask, render_template
 from common import getConn
 app=Flask(__name__)
 @app.route('/table')
-def table():
+def getEventsList():
     #a={}
     #return render_template('table.html', data=a)
     con = getConn()
     cursor =con.cursor()
     cursor.execute("select *  from events")
-    a=cursor.fetchall()   
-    #a={"newsdate":row[1],"header":row[2],"type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]}
-    return render_template('table.html', data=a)
+    rows=cursor.fetchall()
+    values = list()
+    for row in rows:
+        values.append( {"newsdate":row[1],"header":row[2],"type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]})
+    return render_template('eventsList.html', data=values)
 
 app.run()
