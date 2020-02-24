@@ -4,6 +4,9 @@
 <html>
 <body>
 <form action="/events"  method="post">
+<div id="abc">
+Div content
+</div>
 <table>
     <input type="hidden" id="idno" name="idno" value="{{data["idno"]}}">
 <tr>
@@ -63,6 +66,12 @@
 </tr>
 </table>
 <button type="submit" value="add"> add </button>
+<button type="button" onclick ="hide()"> Hide </button>
 </form>
+<script>
+function hide() {
+    document.getElementById("abc").style.display = "none";
+}
+</script>
 </body>
 </html>
