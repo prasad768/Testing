@@ -1,22 +1,13 @@
-<CODETYPE html>
-<html>
-<head>
-<style>
-tr.alt1 td {
-    background:#AAAAAA;
-	color:Blue
-}
-tr.alt2 td {
-    background:#EEEEEE;
-}
+{% extends 'template.html' %}
 
-tr.gap td {
-    height:5px;
-}
+{% block header %}
+  <h1>{% block title %}Option Management software{% endblock %}</h1>
+{% endblock %}
 
-</style>
-</head>
-<body>
+{% block content %}
+
+
+
 <form action="/OptDef" method="post">
 <table>
 <input type="hidden" id="id" name="id" value="{{data['id']}}">
@@ -129,9 +120,5 @@ tr.gap td {
 <button type="submit" Value="Save"> Save </button>
 <button type="remove" value="delete">delete</button>
 </form>
-</body>
-</html>
-
-
-
+{% endblock %}
 
