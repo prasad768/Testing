@@ -12,47 +12,45 @@
 <table>
 <input type="hidden" id="id" name="id" value="{{data['id']}}">
 <tr class="alt1">
-<td >Underlying</td>
+<td>Underlying</td>
 <td></td>
 <td>{{data["underlying"]}}</td>
 <tr class="alt2">
 <td rowspan=5>Underlying level</td>
                 
-                <td>1</td><td> <input type="text" name="level1" value="{{data['l0']}}"> </td> </tr>
-<tr class="alt2"><td>2 </td><td> <input type="text" name="level2" value="{{data['l1']}}"> </td> </tr>
-<tr class="alt2"><td>3 </td><td> <input type="text" name="level3" value="{{data['l2']}}"> </td> </tr>
-<tr class="alt2"><td>4 </td><td> <input type="text" name="level4" value="{{data['l3']}}"> </td> </tr>
-<tr class="alt2"><td>5 </td><td> <input type="text" name="level5" value="{{data['l4']}}"> </td> </tr>
+                <td>1</td><td><input type="text" name="level1" value="{{data['l0']}}"> </td> </tr>
+<tr class="alt2"><td>2</td><td><input type="text" name="level2" value="{{data['l1']}}"> </td> </tr>
+<tr class="alt2"><td>3</td><td><input type="text" name="level3" value="{{data['l2']}}"> </td> </tr>
+<tr class="alt2"><td>4</td><td><input type="text" name="level4" value="{{data['l3']}}"> </td> </tr>
+<tr class="alt2"><td>5</td><td><input type="text" name="level5" value="{{data['l4']}}"> </td> </tr>
 </tr>
-<tr class="gap"><td ></td></tr>
-<tr  class="alt1">
+<tr>
 <td>not above</td>
 <td></td>
 <td>
 <input type="text" name="notabove" value="{{data['above']}}">
 </td>
 </tr>
-<tr  class="alt1">
+<tr >
 <td> not below</td>
 <td></td>
 <td>
 <input type="text" name="notbelow" value="{{data['below']}}">
 </td>
 </tr>
-<tr class="gap"><td ></td></tr>
-<tr  class="alt2">
+
+<tr>
 <td rowspan=2>IV</td>
 <td>top</td>
 <td>
 <input type="text" name="ivtop" value="{{data['top']}}"> </td>
 </tr>
-<tr class="alt2">
+<tr>
 <td>Bottom</td>
 <td>
 <input type="text" name="ivbottom" value="{{data['bottom']}}"> </td>
 </tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt1">
+<tr>
 <td rowspan=2>weekly expiry - Price</td>
 <td>Up</td>
 <td>
@@ -63,7 +61,6 @@
 <td>
 <input type="text" name="weeklyexpirytargetdown" value="{{data['down']}}"> </td>
 </tr>
-
 <tr>
 <td >trend15m</td>
 <td></td>
@@ -75,8 +72,7 @@
 </select>
 </td>
 </tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt2">
+<tr>
 <td rowspan=2> max pain</td>
 <td>Direction</td>
 <td>
@@ -92,11 +88,9 @@
 <input type="text" name="maxpaintarget" value="{{data['target']}}">
 </td>
 </tr>
-<tr class="gap"><td ></td></tr>
-<tr class="alt1">
+<tr>
 <td rowspan=3> pcr</td>
 <td>Direction</td>
-
 <td>
 <select name="pcrdirection">
 <option {% if data['pcrdirection']==1 %}selected{% endif %} value="1" >up</option>
@@ -117,8 +111,8 @@
 </td>
 </tr>
 </table>
-<button type="submit" Value="Save"> Save </button>
-<button type="remove" value="delete">delete</button>
+<button class="style" type="submit" Value="Save"> Save </button><br>
+<button  class="style" type="remove" value="delete">delete</button>
 </form>
 {% endblock %}
 
