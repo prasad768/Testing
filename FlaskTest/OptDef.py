@@ -3,7 +3,7 @@ from common import getConn
 def getOptDef (id):
     conn = getConn()
     cursor =conn.cursor()
-    if id is None:
+    if id is None or id == 0 :
         cursor.execute("select *  from optdef".format(id=id))
     else:
         cursor.execute("select *  from optdef where id={id}".format(id=id))
@@ -11,8 +11,7 @@ def getOptDef (id):
     a={"id":row[0], "underlying":row[1],"l0":row[2], "l1":row[3],"l2":row[4],"l3":row[5],"l4":row[6],"above":row[7],"below":row[8],"top":row[9],"bottom":row[10],"up":row[11],"down":row[12],"trend15m":row[13],"direction":row[14],"target":row[15],"pcrdirection":row[16],"to":row[17],"other":row[18]}
     return render_template('OptDef.html', data=a)
 
-def postOptDef ():
-    id=request.form.get('id')
+def postOptDef (id):
     level1 = request.form.get('level1')
     level2 = request.form.get('level2')
     level3 = request.form.get('level3')
@@ -49,4 +48,4 @@ def postOptDef ():
     cursor =conn.cursor()
     cursor.execute(sql)
     conn.commit()
-    return getOptDef()
+    return getOptDef(0)

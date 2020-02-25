@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from OptDef import getOptDef, postOptDef
 from events import getdata, postdata
 from EventsList import getEventsList, DeleteEvent
-
+import os
 from OptDefList import getOptDefList1
 app=Flask(__name__)
 
@@ -26,11 +26,11 @@ def OptDef():
 
 @app.route('/events',methods=['GET','POST'])
 def table1():
+    id = request.args.get("id")
     if request.method == 'GET':
-        id = request.args.get("id")
         return getdata(id)
     if request.method == 'POST':
-        return postdata()
+        return postdata(id)
 
 @app.route('/eventslist')
 def eventslist():
@@ -42,5 +42,8 @@ def eventsDelete():
     DeleteEvent(id)
     return render_template('eventsList.html', rows=getEventsList())
 
+@app.route ('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 app.run()

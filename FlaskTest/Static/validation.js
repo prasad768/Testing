@@ -1,6 +1,6 @@
 function checkEmpty(id){
- var val=document.getElementsByName(id)[0];
- if (val==null||val=="")
+ var item=document.getElementsByName(id)[0];
+ if (item.value==null||item.value=="")
      alert("please fill value");
 }
 
