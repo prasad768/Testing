@@ -115,7 +115,7 @@ nav ul li a, nav ul li span, header .action {
 }
 
 .content input, .content textarea {
-  margin-bottom: 1em;
+  /*margin-bottom: 1em;*/
 }
 
 .content textarea {
@@ -135,8 +135,12 @@ tr:nth-child(even) {
 }
 button.style{
    color:orange;
-   width:50px
+   width:50px;
+   float:left;
 }
 td{
-   padding-left:50px;
+   padding-right:5px;
+}
+input[type=text]{
+   width:50px;
 }

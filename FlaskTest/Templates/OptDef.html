@@ -8,7 +8,7 @@
 
 
 
-<form action="/OptDef" method="post">
+<form action="/OptDef" name="form1" method="post" onsubmit= "return validations()">
 <table>
 <input type="hidden" id="id" name="id" value="{{data['id']}}">
 <tr class="alt1">
@@ -43,18 +43,18 @@
 <td rowspan=2>IV</td>
 <td>top</td>
 <td>
-<input type="text" name="ivtop" value="{{data['top']}}"> </td>
+<input type="text" name="ivtop" value="{{data['top']}}"/> </td>
 </tr>
 <tr>
 <td>Bottom</td>
 <td>
-<input type="text" name="ivbottom" value="{{data['bottom']}}"> </td>
+<input type="text" name="ivbottom" value="{{data['bottom']}}"/> </td>
 </tr>
 <tr>
 <td rowspan=2>weekly expiry - Price</td>
 <td>Up</td>
 <td>
-<input type="text" name="weeklyexpirytargetup" value="{{data['up']}}"> </td>
+<input type="text" name="weeklyexpirytargetup" value="{{data['up']}}"/> </td>
 </tr>
 <tr>
 <td>Down</td>
@@ -111,8 +111,9 @@
 </td>
 </tr>
 </table>
-<button class="style" type="submit" Value="Save"> Save </button><br>
-<button  class="style" type="remove" value="delete">delete</button>
+<button class="style" type="submit" Value="Save" > Save </button>
 </form>
+<button  class="style" type="remove" value="delete"> delete</button>
+
 {% endblock %}
 
