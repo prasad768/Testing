@@ -29,7 +29,7 @@
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
 <td><a href="/deleteevent?id={{data['id']}}">Delete</a>
-<button type="button" onclick="unhide(); getEvent(12)" > edit </button>
+<button type="button" onclick="unhide(); getEvent({{data['id']}})" > edit </button>
 </td>
 </tr>
 {%endfor %}
@@ -93,22 +93,22 @@
 </td>
 </tr>
 </table>
-<button type="button" onclick ="hide()"> Hide </button>
 <br>
-<div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+<input type="button" Value="Save" onclick="save()"/>
 </div>
 <script>
-function hide() {
-    document.getElementById("eventedit").style.display = "none";
-}
 window.onload = function() {
   document.getElementById('eventedit').style.display = "none";
 };
 function unhide() { 
     document.getElementById("eventedit").style.display = "block";
 }
+function save() {
+    document.getElementById("eventedit").style.display = "none";
+    //Save in to Database
+    //Refresh Grid from database
+}
 </script>
-<input type="submit" Value="Save"/>
 
 </form>
 </body>
