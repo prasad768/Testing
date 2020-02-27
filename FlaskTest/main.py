@@ -45,6 +45,9 @@ def table1():
 def eventslist():
     return render_template('eventsList.html', rows=getEventsList())
 
+@app.route('/saveevent', methods=['POST'])
+def saveEvent():
+    print ('Save Event is called')
 
 @app.route('/deleteevent')
 def eventsDelete():

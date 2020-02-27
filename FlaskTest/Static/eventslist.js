@@ -11,26 +11,19 @@ function getEvent(idval) {
 			//alert(data);
 		});
 }
-//When Edit button is clicked, store the event Id in to "IdNo" hidden field
 
-
-/*
+function saveEvent (header) {
+alert('Save is called');
+		$.ajax({
 			data : {
-				newsdate : $('#newsdate').date(),
-				header : $('header').val()
-				type : $('type').val()
-				impact : $('impact').int()
-				impactrationale : $('impactrationale').val()
-				url : $('url').url()
-				effectivedate : $('effective').date()
-				
-			}*/
-			
-			
-	/*			$.ajax({
-			data : {
-				test: 'Hello'
+				header: header
 			},
-			type : 'Get',
-			url : '/test'
-		}) */
+			type : 'Post',
+			url : '/saveevent'
+		})
+		.done(function(data) {
+    		$("input[name=header]").val(data['header']);
+			//alert(data);
+		});
+
+}

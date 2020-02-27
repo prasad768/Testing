@@ -41,14 +41,14 @@
 <td>newsdate</td>
 <td></td>
 <td>
-<input type="date" name="newsdate" value="">
+<input type="date" id="newsdate" value="">
 </td>
 </tr>
 <tr>
 <td>header</td>
 <td></td>
 <td>
-<input type="text" name="header" value="">
+<input type="text" id="header" value="">
 </td>
 </tr>
 <td>type</td>
@@ -105,7 +105,9 @@ function unhide() {
 }
 function save() {
     document.getElementById("eventedit").style.display = "none";
+    header= document.getElementById('header').value;
     //Save in to Database
+    saveEvent(header);
     //Refresh Grid from database
 }
 </script>
