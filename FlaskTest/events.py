@@ -8,6 +8,15 @@ Created on Fri Feb  7 10:07:41 2020
 from flask import render_template, request
 from common import getConn
     
+def getEventData(id):
+    conn = getConn()
+    cursor =conn.cursor()
+    cursor.execute("select *  from events where idno = {id}".format(id= id))
+    row=cursor.fetchall()[0]
+    a={"idno":row[0], "newsdate":row[1], "header":row[2], "type":row[3],"impact":int(row[4]),"impactrationale":row[5],"url":row[6],"effectivedate":row[7]}
+    return a
+    
+    
 def getdata (id):
     conn = getConn()
     cursor =conn.cursor()

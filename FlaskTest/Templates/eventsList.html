@@ -1,28 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-</style>
 </head>
 <body>
+	<script src="{{ url_for('static', filename='eventslist.js') }}"></script>
+
+<form action="/events"  method="post">
+
 <table border="1" >
 <tr><td>newsdate</td>
 <td>header</td>
 <td>type</td>
 <td>impact</td>
 <td>impactrationale</td>
-<td>url </td>
+<td>url</td>
 <td>effectivedate</td>
 </tr>
 {% for data in rows %}
 <tr>
 <td>{{data["newsdate"]}}</td>
-<td><a href="/events?id={{data['id']}}">  {{data["header"]}} </a></td>
+<td><a href="/events?id={{data['id']}}"> {{data["header"]}} </a></td>
 <td>{{data["type"]}}</td>
 <td>{{data["impact"]}}</td>
 <td>{{data["impactrationale"]}}</td>
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
-<td><a href="/deleteevent?id={{data['id']}}">Delete</a></td>
+<td><a href="/deleteevent?id={{data['id']}}">Delete</a>
+<button type="button" onclick="unhide(); getEvent(12)" > edit </button>
+</td>
 </tr>
 {%endfor %}
-</body>
 </table>
-<input type="Add" Value="Save"/>
+<div id="eventedit" >
+<input type="hidden" id="idno" name="idno" value="">
+<table>
+<tr>
+<td>newsdate</td>
+<td></td>
+<td>
+<input type="date" name="newsdate" value="">
+</td>
+</tr>
+<tr>
+<td>header</td>
+<td></td>
+<td>
+<input type="text" name="header" value="">
+</td>
+</tr>
+<td>type</td>
+<td></td>
+<td>
+<select name="type">
+    <option value="India">India</option>
+    <option value="US">US</option>
+    <option value="World">World</option>
+    <option value="Results">Results</option>
+</select>
+
+
+</td>
+</tr>
+<tr>
+<td>impact</td>
+<td></td>
+<td>
+<input type="number" name="impact" value="">
+</td>
+</tr>
+<tr>
+<td>impactrationale</td>
+<td></td>
+<td>
+<input type="text" name="impactrationale" value="">
+</td>
+</tr>
+<tr>
+<td>url</td>
+<td></td>
+<td>
+<input type="url" name="url" value="">
+</td>
+</tr>
+<tr>
+<td>effectivedate</td>
+<td></td>
+<td>
+<input type="date" name="effectivedate" value="">
+</td>
+</tr>
+</table>
+<button type="button" onclick ="hide()"> Hide </button>
+<br>
+<div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+</div>
+<script>
+function hide() {
+    document.getElementById("eventedit").style.display = "none";
+}
+window.onload = function() {
+  document.getElementById('eventedit').style.display = "none";
+};
+function unhide() { 
+    document.getElementById("eventedit").style.display = "block";
+}
+</script>
+<input type="submit" Value="Save"/>
+
+</form>
+</body>

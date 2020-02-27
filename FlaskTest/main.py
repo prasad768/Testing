@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request, send_from_directory
 from OptDef import getOptDef, postOptDef
-from events import getdata, postdata
+from events import getdata, postdata, getEventData
 from EventsList import getEventsList, DeleteEvent
 import os
 from OptDefList import getOptDefList1
@@ -24,6 +24,15 @@ def OptDef():
     if request.method == 'POST':
         return postOptDef(id)
 
+@app.route ('/getevent') 
+def test():
+
+    id = request.args.get("id")
+    print ("id = ", id)
+    event= getEventData(id)
+    print (event)
+    return event
+
 @app.route('/events',methods=['GET','POST'])
 def table1():
     id = request.args.get("id")
@@ -35,6 +44,7 @@ def table1():
 @app.route('/eventslist')
 def eventslist():
     return render_template('eventsList.html', rows=getEventsList())
+
 
 @app.route('/deleteevent')
 def eventsDelete():
