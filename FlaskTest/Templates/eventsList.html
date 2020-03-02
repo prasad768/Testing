@@ -29,7 +29,7 @@
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
 <td><a href="/deleteevent?id={{data['id']}}">Delete</a>
-<button type="button" onclick="unhide(); getevent({{data['id']}})" > edit </button>
+<button type="button" onclick="unhide(); getEvent({{data['id']}})" > edit </button>
 </td>
 </tr>
 {%endfor %}
@@ -109,6 +109,27 @@ function save() {
     url= document.getElementById('url').value;
 
 }
+
+function getEvent(idval) {
+		$.ajax({
+			data : {
+				id : idval
+			},
+			type : 'Get',
+			url : '/getevent'
+		})
+		.done(function(data) {
+		    $("input[name=newsdate]").val(data['newsdate']);
+    		$("input[name=header]").val(data['header']);
+    		$("input[name=type").val(data['type']);
+    		$("input[name=impact]").val(data['impact']);
+    		$("input[name=impactrationale]").val(data['impactrationale']);
+    		$("input[name=url]").val(data['url']);
+    		$("input[name=effectivedate]").val(data['effectivedate']);
+			
+		});
+}
+
 </script>
 </form>
 </body>
