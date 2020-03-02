@@ -18,6 +18,25 @@ def getEventsList():
         values.append( {"id":row[0], "newsdate":row[1],"header":row[2],"type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]})
     return values
 
+def postEventsList():
+    
+    con = getConn()
+    cursor =con.cursor()
+    cursor.execute("select *  from events")
+    rows=cursor.fetchall()
+    values = list()
+    for row in rows:
+        values.update( {"id":row[0], "newsdate":row[1],"header":row[2],"type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]})
+    return values
+
+def editEvent (id):
+    con = getConn()
+    cursor =con.cursor()
+    sql = "edit from events where idno = {id}".format(id=id)
+    print (sql)
+    cursor.execute(sql)
+    con.commit()
+
 def DeleteEvent (id):
     con = getConn()
     cursor =con.cursor()
@@ -25,4 +44,13 @@ def DeleteEvent (id):
     print (sql)
     cursor.execute(sql)
     con.commit()
-    
+
+def SaveEvent (id):
+    con = getConn()
+    cursor =con.cursor()
+    cursor.execute("select *  from events")
+    rows=cursor.fetchall()
+    values = list()
+    for row in rows:
+        values.UPDATE( {"id":row[0], "newsdate":row[1],"header":row[2],"type":row[3],"impact":row[4],"impactrationale":row[5],"url":row[6],"effectivedate":row[7]})
+    return values

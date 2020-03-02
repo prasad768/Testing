@@ -29,7 +29,7 @@
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
 <td><a href="/deleteevent?id={{data['id']}}">Delete</a>
-<button type="button" onclick="unhide(); getEvent({{data['id']}})" > edit </button>
+<button type="button" onclick="unhide(); getevent({{data['id']}})" > edit </button>
 </td>
 </tr>
 {%endfor %}
@@ -60,8 +60,6 @@
     <option value="World">World</option>
     <option value="Results">Results</option>
 </select>
-
-
 </td>
 </tr>
 <tr>
@@ -104,13 +102,13 @@ function unhide() {
     document.getElementById("eventedit").style.display = "block";
 }
 function save() {
-    document.getElementById("eventedit").style.display = "none";
+    document.getElementById("eventedit").style.display = "none"; 
+   
     header= document.getElementById('header').value;
-    //Save in to Database
-    saveEvent(header);
-    //Refresh Grid from database
+    impactrationale= document.getElementById('impactrationale').value;
+    url= document.getElementById('url').value;
+
 }
 </script>
-
 </form>
 </body>
