@@ -43,7 +43,7 @@ def postdata ():
        VALUES ('{newsdate}', '{header}', '{newstype}', '{impact}', '{impactrationale}', '{url}', '{effectivedate}')"""
        sql = sql.format(sql, idno=idno, newsdate=newsdate, header=header, newstype=newstype, impact=impact, impactrationale=impactrationale, url=url, effectivedate=effectivedate)
     else:
-        sql = """update events set newsdate='{newsdate}', header='{header}', newstype='{newstype}', impact='{impact}', impactrationale='{impactrationale}', url='{url}', effectivedate='{effectivedate}' 
+        sql = """update events set newsdate='{newsdate}', header='{header}', newstype='{newstype}', impact={impact}, impactrationale='{impactrationale}', url='{url}', effectivedate='{effectivedate}' 
           where idno={idno} """
         sql = sql.format(sql,  newsdate=newsdate, header=header, newstype=newstype, impact=impact, impactrationale=impactrationale, url=url, effectivedate=effectivedate, idno=idno)
     
@@ -53,6 +53,6 @@ def postdata ():
     cursor =conn.cursor()
     cursor.execute(sql)
     conn.commit()
-    return getdata()
+    return getdata(idno)
 
 

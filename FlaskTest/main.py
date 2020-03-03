@@ -39,7 +39,7 @@ def table1():
     if request.method == 'GET':
         return getdata(id)
     if request.method == 'POST':
-        return postdata(id)
+        return postdata()
 
 @app.route('/eventslist')
 def eventslist():
