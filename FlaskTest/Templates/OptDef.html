@@ -41,10 +41,11 @@
 
 <tr>
 <td rowspan=2>IV</td>
-<td>top</td>
+<td> top</td>
 <td>
 <input type="text" name="ivtop" value="{{data['top']}}"/> </td>
 </tr>
+
 <tr>
 <td>Bottom</td>
 <td>
@@ -57,7 +58,9 @@
 <input type="text" name="weeklyexpirytargetup" value="{{data['up']}}"/> </td>
 </tr>
 <tr>
+
 <td>Down</td>
+
 <td>
 <input type="text" name="weeklyexpirytargetdown" value="{{data['down']}}"> </td>
 </tr>
@@ -111,9 +114,10 @@
 </td>
 </tr>
 </table>
+<div class="btn-group">
 <button class="style" type="submit" Value="Save" > Save </button>
-</form>
 <button  class="style" type="remove" value="delete"> delete</button>
-
+</div>
+</form>
 {% endblock %}
 

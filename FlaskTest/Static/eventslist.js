@@ -7,23 +7,35 @@ function getEvent(idval) {
 			url : '/getevent'
 		})
 		.done(function(data) {
+		    $("input[name=newsdate]").val(data['newsdate']);
     		$("input[name=header]").val(data['header']);
-			//alert(data);
+    		$("input[name=type").val(data['type']);
+    		$("input[name=impact]").val(data['impact']);
+    		$("input[name=impactrationale]").val(data['impactrationale']);
+    		$("input[name=url]").val(data['url']);
+    		$("input[name=effectivedate]").val(data['effectivedate']);
+    		
+
 		});
 }
 
-function saveEvent (header) {
+function saveEvent (idval) {
 alert('Save is called');
 		$.ajax({
 			data : {
-				header: header
-			},
+				    header: $("input[id=header]").val(),
+				    id:idval
+		    },
+
 			type : 'Post',
-			url : '/saveevent'
+			url : '/saveEvent'
 		})
 		.done(function(data) {
-    		$("input[name=header]").val(data['header']);
+    		$("input[id=header]").val(data['header']);
+
 			//alert(data);
 		});
 
 }
+
+		

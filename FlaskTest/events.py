@@ -53,4 +53,6 @@ def postdata ():
     cursor =conn.cursor()
     cursor.execute(sql)
     conn.commit()
-    return getdata(1)
+    return getdata()
+
+

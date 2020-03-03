@@ -133,10 +133,16 @@ input[type=submit] {
 tr:nth-child(even) { 
    background:lightblue;
 }
-button.style{
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+button.style {
    color:orange;
    width:50px;
-   float:left;
+
+
 }
 td{
    padding-right:5px;
@@ -144,3 +150,4 @@ td{
 input[type=text]{
    width:50px;
 }
+

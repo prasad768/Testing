@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, send_from_directory
 from OptDef import getOptDef, postOptDef
 from events import getdata, postdata, getEventData
-from EventsList import getEventsList, DeleteEvent
+import EventsList as evt
 import os
 from OptDefList import getOptDefList1
 app=Flask(__name__)
@@ -43,17 +43,20 @@ def table1():
 
 @app.route('/eventslist')
 def eventslist():
-    return render_template('eventsList.html', rows=getEventsList())
+    return render_template('eventsList.html', rows=evt.getEventsList())
 
-@app.route('/saveevent', methods=['POST'])
+@app.route('/saveEvent', methods=['POST'])
 def saveEvent():
+    header=request.form.get('header')
+    id=request.form.get('id')
+    evt.SaveEvent(id, header)
     print ('Save Event is called')
 
 @app.route('/deleteevent')
 def eventsDelete():
     id = request.args.get("id")
-    DeleteEvent(id)
-    return render_template('eventsList.html', rows=getEventsList())
+    evt.DeleteEvent(id)
+    return render_template('eventsList.html', rows=evt.getEventsList())
 
 @app.route ('/favicon.ico')
 def favicon():

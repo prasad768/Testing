@@ -7,7 +7,13 @@
 </head>
 <body>
 	<script src="{{ url_for('static', filename='eventslist.js') }}"></script>
+<script>
+"use strict";
+var id=0;
+function save(id) {
 
+}
+</script>
 <form action="/events"  method="post">
 
 <table border="1" >
@@ -29,7 +35,8 @@
 <td>{{data["url"]}}</td>
 <td>{{data["effectivedate"]}}</td>
 <td><a href="/deleteevent?id={{data['id']}}">Delete</a>
-<button type="button" onclick="unhide(); getEvent({{data['id']}})" > edit </button>
+<button type="button" onclick="getEvt({{data['id']}});" > edit </button>
+ 
 </td>
 </tr>
 {%endfor %}
@@ -41,14 +48,14 @@
 <td>newsdate</td>
 <td></td>
 <td>
-<input type="date" id="newsdate" value="">
+<input type="date" id="newsdate" name="newsdate" value="">
 </td>
 </tr>
 <tr>
 <td>header</td>
 <td></td>
 <td>
-<input type="text" id="header" value="">
+<input type="text" id="header" name='header' value="">
 </td>
 </tr>
 <td>type</td>
@@ -60,36 +67,34 @@
     <option value="World">World</option>
     <option value="Results">Results</option>
 </select>
-
-
 </td>
 </tr>
 <tr>
 <td>impact</td>
 <td></td>
 <td>
-<input type="number" name="impact" value="">
+<input type="number" id="impact" name="impact" value="">
 </td>
 </tr>
 <tr>
 <td>impactrationale</td>
 <td></td>
 <td>
-<input type="text" name="impactrationale" value="">
+<input type="text" id="impactrationale" name="impactrationale" value="">
 </td>
 </tr>
 <tr>
 <td>url</td>
 <td></td>
 <td>
-<input type="url" name="url" value="">
+<input type="url" id="url" name="url" value="">
 </td>
 </tr>
 <tr>
 <td>effectivedate</td>
 <td></td>
 <td>
-<input type="date" name="effectivedate" value="">
+<input type="date" id="effectivedate" name="effectivedate" value="">
 </td>
 </tr>
 </table>
@@ -104,13 +109,16 @@ function unhide() {
     document.getElementById("eventedit").style.display = "block";
 }
 function save() {
+
     document.getElementById("eventedit").style.display = "none";
-    header= document.getElementById('header').value;
     //Save in to Database
-    saveEvent(header);
+    saveEvent(id);
     //Refresh Grid from database
+
+}
+function getEvt (idval){
+    unhide(); id=idval; getEvent(idval);
 }
 </script>
-
 </form>
 </body>
