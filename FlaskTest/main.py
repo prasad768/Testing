@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request, send_from_directory
-from OptDef import getOptDef, postOptDef
+from OptDef import getOptDef, postOptDef 
 from events import getdata, postdata, getEventData
 import EventsList as evt
+
+
 import os
-from OptDefList import getOptDefList1
 app=Flask(__name__)
 
 @app.route('/')
@@ -14,15 +15,30 @@ def root():
 
 @app.route('/optdeflist')
 def OptDeflist():
-    return getOptDefList1 ()
+    import OptDefList
+    return render_template('Optdeflist.html', rows=OptDefList.getOptDefList())
+
+@app.route ('/getoptDef') 
+def test1():
+
+    id = request.args.get("id")
+    print ("id = ", id)
+    event= getOptDef(id)
+    print (event)
+    return event
+
     
 @app.route('/optdef', methods=['GET', 'POST'])
 def OptDef():
     id = request.args.get("id")
+    print ("Id: ", id)
+    if id==None:
+        id=0
     if request.method == 'GET':
-        return getOptDef(id)
+        return render_template('OptDef.html', data=getOptDef(id))
     if request.method == 'POST':
-        return postOptDef(id)
+        id=postOptDef(id)
+        return render_template('OptDef.html', data=getOptDef(id))
 
 @app.route ('/getevent') 
 def test():

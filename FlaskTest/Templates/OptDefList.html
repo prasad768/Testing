@@ -1,56 +1,30 @@
 <CODETYPE html>
 <html>
 <head>
-<style>
-tr.alt1 td {
-    background:#AAAAAA;
-	color:Blue
-}
-tr.alt2 td {
-    background:#EEEEEE;
-}
-
-tr.gap td {
-    height:5px;
-}
-
-</style>
+<title>AJAX Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
+	<script src="{{ url_for('static', filename='OptDefList.js') }}"></script>
 <table border="1" >
-<tr><td>Time</td>
-<td>Strike</td>
-<td>Entry</td>
-<td>Stoploss</td>
-<td>Target</td>
-<td>Risk</td>
+<tr><td>underlying</td>
+<td>notabove</td>
+<td>notbelow</td>
+<td>maxpaintarget </td>
+<td>pcrUp</td>
 </tr>
+{% for data in rows %}
 <tr>
-<td>{{data["time"]}}</td>
-<td>{{data["strike"]}}</td>
-<td>{{data["entry"]}}</td>
-<td>{{data["stoploss"]}}</td>
-<td>{{data["target"]}}</td>
-<td>{{data["risk"]}}</td>
+<td><a href="/optdef?id={{data['id']}}"> {{data["underlying"]}} </a></td>
+<td>{{data["notabove"]}}</td>
+<td>{{data["notbelow"]}}</td>
+<td>{{data["maxpainTarget"]}}</td>
+<td>{{data["pcrUp"]}}</td>
+<td><a href="/deleteevent?id={{data['id']}}">Delete</a>
+<button type="button" onclick="getOpt({{data['id']}});" > edit </button>
+</td>
 </tr>
-<tr>
-<td>{{data["time"]}}</td>
-<td>{{data["strike"]}}</td>
-<td>{{data["entry"]}}</td>
-<td>{{data["stoploss"]}}</td>
-<td>{{data["target"]}}</td>
-<td>{{data["risk"]}}</td>
-</tr>
-<tr>
-<td>{{data["time"]}}</td>
-<td>{{data["strike"]}}</td>
-<td>{{data["entry"]}}</td>
-<td>{{data["stoploss"]}}</td>
-<td>{{data["target"]}}</td>
-<td>{{data["risk"]}}</td>
-</tr>
-</table>
-<input type="button" Value="Save"/>
+{%endfor %}
 </body>
 </html>
 
