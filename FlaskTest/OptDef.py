@@ -5,7 +5,7 @@ from common import getSession
 def getOptDef (id):
     session=getSession()
     o=session.query(OptDef).get(id)
-    print ("Object: ", o.id, o.underlying)
+    print ("Object: ", o.id, o.underlying, o.level1)
     if o==None:
         o = OptDef()
     return o
