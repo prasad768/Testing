@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request, send_from_directory
-from OptDef import getOptDef, postOptDef 
+from OptDef import getOptDef, postOptDef
 from events import getdata, postdata, getEventData
 import EventsList as evt
 
@@ -30,10 +30,12 @@ def test1():
     
 @app.route('/optdef', methods=['GET', 'POST'])
 def OptDef():
-    id = request.args.get("id")
+    try:
+        id = request.args.get("id")
+    finally:
+        if id==None:
+            id=0
     print ("Id: ", id)
-    if id==None:
-        id=0
     if request.method == 'GET':
         return render_template('OptDef.html', data=getOptDef(id))
     if request.method == 'POST':
@@ -67,13 +69,25 @@ def saveEvent():
     id=request.form.get('id')
     evt.SaveEvent(id, header)
     print ('Save Event is called')
+    
+#@app.route('/saveOptDef', methods=['POST'])
+#def saveOptDef():
+#    notabove=request.form.get('notabove')
+#    id=request.form.get('id')
+#    saveOptDef(id,notabove)
+#    print ('Save OptDef is called')
 
 @app.route('/deleteevent')
 def eventsDelete():
     id = request.args.get("id")
     evt.DeleteEvent(id)
     return render_template('eventsList.html', rows=evt.getEventsList())
-
+#@app.route('/deleteOpt')
+#def optDelete():
+#    id = request.args.get("id")
+#    deleteOpt(id)
+#    
+     
 @app.route ('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')

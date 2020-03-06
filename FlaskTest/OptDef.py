@@ -4,10 +4,11 @@ from flask import request
 from common import getSession
 def getOptDef (id):
     session=getSession()
-    o=session.query(OptDef).get(id)
-    print ("Object: ", o.id, o.underlying, o.level1)
-    if o==None:
+    if id==None:
         o = OptDef()
+    else:
+        o=session.query(OptDef).get(id)
+
     return o
 
 #    conn = getConn()
@@ -22,9 +23,13 @@ def getOptDef (id):
 
 def postOptDef (id):
     session=getSession()
-    o=session.query(OptDef).get(id)
-    if o==None:
+    id=request.form.get('id')
+
+    if id==None:        
         o = OptDef()
+    else:
+        o=session.query(OptDef).get(id)
+
     o.underlying='BANKNIFTY'
     o.level1 = request.form.get('level1')
     o.level2 = request.form.get('level2')
@@ -43,7 +48,12 @@ def postOptDef (id):
     o.pcrdirection = request.form.get('pcrdirection')
     o.pcrup = request.form.get('pcrup')
     o.pcrdown = request.form.get('pcrdown')
-    session.add(o)
+    #o=session.query(OptDef)
+    #o=o.filter(id)
+    #session.flush()
+    if o.id==None: #if new record
+        session.add(o)
     session.commit()
+    print ("the new id: ", o.id)
     return o.id
     
